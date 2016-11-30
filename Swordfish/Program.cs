@@ -10,8 +10,7 @@ namespace Swordfish
     {
         private static void Main()
         {
-            Console.Write("Hello World!");
-            while(true) { }
+            GameEngine ge = new GameEngine();
         }
     }
 }
