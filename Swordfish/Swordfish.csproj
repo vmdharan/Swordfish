@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cube.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="ImageLoader.cs" />
     <Compile Include="Program.cs" />
@@ -82,8 +83,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Shaders\" />
+    <Content Include="Shaders\cubeShader.hlsl" />
+    <Content Include="Shaders\triShader.hlsl" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

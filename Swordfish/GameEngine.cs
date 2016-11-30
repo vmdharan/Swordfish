@@ -45,6 +45,8 @@ namespace Swordfish
 
         // Components
         private Triangle tri;
+        private Cube cube;
+
         
         // Constructor
         // This is the outer level for the game engine. The basic structure is as follows:
@@ -228,8 +230,23 @@ namespace Swordfish
         // Initialise components
         public void InitialiseComponents()
         {
-            tri = new Triangle(ref dev, ref devCon);
-            tri.Initialise();
+            // --------------------- //
+            // Uncomment for testing //
+            // --------------------- //
+
+            // Triangle test
+            //tri = new Triangle(ref dev, ref devCon);
+            //tri.Initialise();
+
+            // Cube test
+            cube = new Cube(ref dev, ref devCon);
+            cube.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
+            cube.Initialise();
+
+            // ---- //
+            // Live //
+            // ---- //
+
         }
 
         // Render DX
@@ -252,7 +269,11 @@ namespace Swordfish
         // Render components
         public void RenderComponents()
         {
-            tri.Render();
+            // Uncomment for testing
+            //tri.Render();
+            cube.Render();
+
+            // Live
         }
 
         // Update DX
@@ -273,13 +294,21 @@ namespace Swordfish
         // Update components
         public void UpdateComponents()
         {
-            tri.Update();
+            // Uncomment for testing
+            //tri.Update();
+            cube.Update();
+
+            // Live
         }
 
         // Clean up components
         public void CleanUpComponents()
         {
+            // Uncomment for testing
+            //tri.CleanUp();
+            cube.CleanUp();
 
+            // Live
         }
 
         // Clean up DX
