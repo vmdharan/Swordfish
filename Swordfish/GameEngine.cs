@@ -44,7 +44,7 @@ namespace Swordfish
         private BlendState blendState2;
 
         // Components
-
+        private Triangle tri;
         
         // Constructor
         // This is the outer level for the game engine. The basic structure is as follows:
@@ -228,7 +228,8 @@ namespace Swordfish
         // Initialise components
         public void InitialiseComponents()
         {
-
+            tri = new Triangle(ref dev, ref devCon);
+            tri.Initialise();
         }
 
         // Render DX
@@ -251,7 +252,7 @@ namespace Swordfish
         // Render components
         public void RenderComponents()
         {
-
+            tri.Render();
         }
 
         // Update DX
@@ -272,7 +273,7 @@ namespace Swordfish
         // Update components
         public void UpdateComponents()
         {
-
+            tri.Update();
         }
 
         // Clean up components
