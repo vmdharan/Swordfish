@@ -46,12 +46,14 @@ namespace Swordfish
         // Components
         private Triangle tri;
         private Cube cube;
+        private CubeImport ci;
 
         private DXInput di;
         private ArcCamera arc;
         private FPSCamera cam;
 
         private Skydome sky;
+        private Terrain terrain;
 
         
         // Constructor
@@ -249,6 +251,11 @@ namespace Swordfish
             //cube.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
             //cube.Initialise();
 
+            // Cube import
+            ci = new CubeImport(ref dev, ref devCon);
+            ci.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
+            ci.Initialise();
+
             // ---- //
             // Live //
             // ---- //
@@ -265,6 +272,10 @@ namespace Swordfish
             sky = new Skydome(ref dev, ref devCon);
             sky.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
             sky.Initialise();
+
+            terrain = new Terrain(ref dev, ref devCon);
+            terrain.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
+            terrain.Initialise();
         }
 
         // Render DX
@@ -290,9 +301,11 @@ namespace Swordfish
             // Uncomment for testing
             //tri.Render();
             //cube.Render();
+            ci.Render();
 
             // Live
             sky.Render();
+            terrain.Render();
         }
 
         // Update DX
@@ -316,10 +329,12 @@ namespace Swordfish
             // Uncomment for testing
             //tri.Update();
             //cube.Update();
+            ci.Update(ref di, ref cam);
 
             // Live
             di.Update();
             sky.Update(ref di, ref cam);
+            terrain.Update(ref di, ref cam, ref form);
         }
 
         // Clean up components
@@ -328,10 +343,12 @@ namespace Swordfish
             // Uncomment for testing
             //tri.CleanUp();
             //cube.CleanUp();
+            ci.CleanUp();
 
             // Live
             di.CleanUp();
             sky.CleanUp();
+            terrain.CleanUp();
         }
 
         // Clean up DX

@@ -73,14 +73,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArcCamera.cs" />
+    <Compile Include="BBCorners.cs" />
     <Compile Include="Cube.cs" />
+    <Compile Include="CubeImport.cs" />
     <Compile Include="DXInput.cs" />
     <Compile Include="FPSCamera.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="ImageLoader.cs" />
+    <Compile Include="PerlinNoise.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skydome.cs" />
+    <Compile Include="Terrain.cs" />
+    <Compile Include="TerrainEngine.cs" />
     <Compile Include="Triangle.cs" />
     <Compile Include="X_Mesh_Loader.cs" />
   </ItemGroup>
@@ -89,8 +94,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Shaders\BBoxShader.hlsl" />
     <Content Include="Shaders\cubeShader.hlsl" />
     <Content Include="Shaders\cubeTexShader.hlsl" />
+    <Content Include="Shaders\cubeTexShader2.hlsl" />
+    <Content Include="Shaders\TerrainShader.hlsl" />
     <Content Include="Shaders\triShader.hlsl" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
