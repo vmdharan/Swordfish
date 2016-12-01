@@ -47,6 +47,12 @@ namespace Swordfish
         private Triangle tri;
         private Cube cube;
 
+        private DXInput di;
+        private ArcCamera arc;
+        private FPSCamera cam;
+
+        private Skydome sky;
+
         
         // Constructor
         // This is the outer level for the game engine. The basic structure is as follows:
@@ -239,14 +245,26 @@ namespace Swordfish
             //tri.Initialise();
 
             // Cube test
-            cube = new Cube(ref dev, ref devCon);
-            cube.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
-            cube.Initialise();
+            //cube = new Cube(ref dev, ref devCon);
+            //cube.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
+            //cube.Initialise();
 
             // ---- //
             // Live //
             // ---- //
+            di = new DXInput();
+            di.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
 
+            arc = new ArcCamera();
+            arc.setDXInput(ref di);
+
+            cam = new FPSCamera();
+            cam.setDXInput(ref di);
+            cam.setProjectionMatrix(form.ClientSize.Width, form.ClientSize.Height);
+
+            sky = new Skydome(ref dev, ref devCon);
+            sky.setDimensions(form.ClientSize.Width, form.ClientSize.Height);
+            sky.Initialise();
         }
 
         // Render DX
@@ -271,9 +289,10 @@ namespace Swordfish
         {
             // Uncomment for testing
             //tri.Render();
-            cube.Render();
+            //cube.Render();
 
             // Live
+            sky.Render();
         }
 
         // Update DX
@@ -296,9 +315,11 @@ namespace Swordfish
         {
             // Uncomment for testing
             //tri.Update();
-            cube.Update();
+            //cube.Update();
 
             // Live
+            di.Update();
+            sky.Update(ref di, ref cam);
         }
 
         // Clean up components
@@ -306,9 +327,11 @@ namespace Swordfish
         {
             // Uncomment for testing
             //tri.CleanUp();
-            cube.CleanUp();
+            //cube.CleanUp();
 
             // Live
+            di.CleanUp();
+            sky.CleanUp();
         }
 
         // Clean up DX
